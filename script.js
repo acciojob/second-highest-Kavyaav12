@@ -1,20 +1,22 @@
 function secondHighest(arr) {
+    // Edge case: Not an array or has fewer than 2 elements
     if (!Array.isArray(arr) || arr.length < 2) {
         return -Infinity;
     }
 
     let max = -Infinity;
-    let second = -Infinity;
+    let secondMax = -Infinity;
 
     for (let num of arr) {
         if (num > max) {
-            second = max;
+            // New max found; shift previous max to secondMax
+            secondMax = max;
             max = num;
-        } else if (num > second && num < max) {
-            second = num;
+        } else if (num > secondMax && num < max) {
+            // New second max found
+            secondMax = num;
         }
     }
 
-    return (second === -Infinity) ? -Infinity : second;
+    return (secondMax === -Infinity) ? -Infinity : secondMax;
 }
-//your JS code here. If required.
